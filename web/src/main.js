@@ -1,18 +1,70 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from 'vue';
+import App from './App.vue';
+import Gantt from './components/Gantt.vue';
+import Info from './components/Info.vue';
 
-import router from './router'
+import Router from 'vue-router';
+Vue.use(Router);
 
-import ElementUI from 'element-ui' // 追記
-import locale from 'element-ui/lib/locale/lang/ja' // 追記
-import 'element-ui/lib/theme-chalk/index.css' // 追記
+const router = new Router({
+  routes: [
+    {
+      path: '/',
+      component: Gantt
+    },
+    {
+      path: '/info',
+      component: Info
+    }
+  ]
+});
 
-Vue.config.productionTip = false
-Vue.use(ElementUI, {locale}) // 追記
-// import { createApp } from 'vue'
-// createApp(App).mount('#app')
+import './styles/quasar.styl';
+import iconSet from 'quasar/icon-set/mdi-v3.js';
+import '@quasar/extras/roboto-font/roboto-font.css';
+import '@quasar/extras/mdi-v3/mdi-v3.css';
+import {
+  Quasar,
+  QLayout,
+  QHeader,
+  QDrawer,
+  QPageContainer,
+  QPage,
+  QToolbar,
+  QToolbarTitle,
+  QBtn,
+  QIcon,
+  QList,
+  QItem,
+  QItemSection,
+  QItemLabel
+} from 'quasar';
+
+Vue.use(Quasar, {
+  config: {},
+  components: {
+    QLayout,
+    QHeader,
+    QDrawer,
+    QPageContainer,
+    QPage,
+    QToolbar,
+    QToolbarTitle,
+    QBtn,
+    QIcon,
+    QList,
+    QItem,
+    QItemSection,
+    QItemLabel
+  },
+  directives: {},
+  plugins: {},
+  iconSet: iconSet
+});
+
+Vue.config.productionTip = false;
 
 new Vue({
-    router,
-    render: h => h(App)
-}).$mount('#app')
+  router,
+  render: h => h(App)
+}).$mount('#app');
